@@ -3,101 +3,103 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MyBnB — Airbnb Replica</title>
+  <title>MyBnB — Book Unique Rentals & Experiences</title>
+
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Your stylesheet -->
+  <link rel="stylesheet" href="index.css">
+
   <style>
+    /* small safety fallbacks if index.css missing */
     body { font-family: Arial, sans-serif; }
-    .search-bar {
-      background: #fff; border-radius: 30px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1); padding: 10px 20px;
+    .search-bar { background: #fff; border-radius: 30px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); padding: 10px 20px; }
+    .category-icons img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+    .listing-card img { border-radius: 10px; width: 100%; height: 220px; object-fit: cover; display:block; }
+    .listing-card { padding: 6px; }
+    .scroll-btn { position: absolute; top: 50%; transform: translateY(-50%); background: #fff; border: 1px solid #ddd; width: 36px; height: 36px; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .scroll-btn.left { left: 4px; }
+    .scroll-btn.right { right: 4px; }
+    footer { background: #f8f8f8; padding: 36px 0; margin-top: 40px; }
+    footer ul { list-style:none; padding:0; }
+    footer ul li { margin-bottom:8px; }
+    @media (max-width:767px) {
+      .listing-card img { height: 160px; }
     }
-    .category-icons img {
-      width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
-    }
-    .listing-card img {
-      border-radius: 10px; width: 100%; height: 200px; object-fit: cover;
-    }
-    footer { background: #f7f7f7; padding: 40px 0; margin-top: 40px; }
-    footer h5 { font-size: 16px; margin-bottom: 15px; }
-    footer ul { padding: 0; list-style: none; }
-    footer ul li { margin-bottom: 8px; font-size: 14px; }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- NAV -->
   <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html">MyBnB</a>
-      <div class="ms-auto">
-        <a href="#" class="btn btn-light me-2">Airbnb your home</a>
+      <div class="ms-auto d-flex align-items-center gap-2">
+        <a href="#" class="btn btn-light">List your home</a>
         <a href="#" class="btn btn-outline-dark">Login</a>
       </div>
     </div>
   </nav>
 
   <!-- HERO + SEARCH -->
-  <section class="bg-light text-center py-5" style="background:url('Pictures/hero.jpg') center/cover no-repeat; height:300px;">
-    <div class="container h-100 d-flex justify-content-center align-items-center">
-      <div class="search-bar w-75">
+  <section class="hero-section d-flex align-items-center justify-content-center text-center" style="background:linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url('Pictures/hero.jpg') center/cover no-repeat; min-height: 300px;">
+    <div class="container">
+      <div class="search-bar mx-auto" style="max-width:1100px;">
         <form class="row g-2">
-          <div class="col-md"><input type="text" class="form-control" placeholder="Where"></div>
-          <div class="col-md"><input type="date" class="form-control" placeholder="Check in"></div>
-          <div class="col-md"><input type="date" class="form-control" placeholder="Check out"></div>
+          <div class="col-md"><input name="where" type="text" class="form-control" placeholder="Where"></div>
+          <div class="col-md"><input name="checkin" type="date" class="form-control" placeholder="Check in"></div>
+          <div class="col-md"><input name="checkout" type="date" class="form-control" placeholder="Check out"></div>
           <div class="col-md">
-            <select class="form-select">
-              <option>Who</option><option>1 guest</option><option>2 guests</option><option>3 guests</option><option>4+ guests</option>
+            <select name="guests" class="form-select">
+              <option>Who</option>
+              <option>1 guest</option>
+              <option>2 guests</option>
+              <option>3 guests</option>
+              <option>4+ guests</option>
             </select>
           </div>
-          <div class="col-md-auto"><button class="btn btn-danger">Search</button></div>
+          <div class="col-md-auto">
+            <button type="submit" class="btn btn-danger">Search</button>
+          </div>
         </form>
       </div>
     </div>
   </section>
 
   <!-- CATEGORIES -->
-  <section class="py-4 border-bottom">
-    <div class="container d-flex overflow-auto category-icons gap-4">
+  <section class="py-4 border-bottom position-relative">
+    <div class="container">
+      <div id="categoryRow" class="d-flex overflow-auto gap-3 align-items-center">
+        <div class="text-center">
+          <a href="kevinharts.html" title="Icons">
+            <img src="https://a0.muscache.com/im/pictures/mediaverse/category_icon/original/3e5243c8-4d15-4c6b-97e3-7ba2bb7bb880.png" alt="Icons">
+            <p class="small mb-0">Icons</p>
+          </a>
+        </div>
 
-      <!-- Icons (linked to Kevin Hart) -->
-      <div class="text-center">
-        <a href="kevinharts.html">
-          <img src="Pictures/air1.1.png" alt="Icons">
-          <p class="small">Icons</p>
-        </a>
+        <div class="text-center">
+          <a href="earth-homes.html" title="Earth Homes">
+            <img src="https://a0.muscache.com/pictures/d7445031-62c4-46d0-91c3-4f29f9790f7a.jpg" alt="Earth Homes">
+            <p class="small mb-0">Earth Homes</p>
+          </a>
+        </div>
+
+        <div class="text-center"><img src="https://a0.muscache.com/pictures/8b44f770-7156-4c7b-b4d3-d92549c8652f.jpg" alt="Arctic"><p class="small mb-0">Arctic</p></div>
+        <div class="text-center"><img src="https://a0.muscache.com/pictures/10ce1091-c854-40f3-a2fb-defc2995bcaf.jpg" alt="Beach"><p class="small mb-0">Beach</p></div>
+        <div class="text-center"><img src="https://a0.muscache.com/pictures/4d4a4eba-c7e4-43eb-9ce2-95e1d200d10e.jpg" alt="Treehouse"><p class="small mb-0">Treehouse</p></div>
+        <div class="text-center"><img src="https://a0.muscache.com/pictures/5ed8f7c7-2e1f-43a8-9a39-4edfc81a3325.jpg" alt="Bed & Breakfast"><p class="small mb-0">B&B</p></div>
+        <div class="text-center"><img src="https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg" alt="Pools"><p class="small mb-0">Pools</p></div>
+        <div class="text-center"><img src="https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg" alt="Views"><p class="small mb-0">Views</p></div>
+        <div class="text-center"><img src="https://a0.muscache.com/pictures/aaa02c2d-9f0d-4c41-878a-68c12ec6c6bd.jpg" alt="Farms"><p class="small mb-0">Farms</p></div>
+        <div class="text-center"><img src="https://a0.muscache.com/pictures/677a041d-7264-4c45-bb72-52bff21eb6e8.jpg" alt="Lakefront"><p class="small mb-0">Lakefront</p></div>
+        <div class="text-center"><img src="https://a0.muscache.com/pictures/c8e2ed05-c666-47b6-99fc-4cb6edcde6b4.jpg" alt="Luxe"><p class="small mb-0">Luxe</p></div>
+        <div class="text-center"><img src="https://a0.muscache.com/pictures/7630c83f-96a8-4232-9a10-0398661e2e6f.jpg" alt="Rooms"><p class="small mb-0">Rooms</p></div>
       </div>
 
-      <!-- Earth Homes -->
-      <div class="text-center">
-        <a href="earth-homes.html">
-          <img src="Pictures/air1.2.png" alt="Earth Homes">
-          <p class="small">Earth Homes</p>
-        </a>
-      </div>
-
-      <!-- Arctic -->
-      <div class="text-center">
-        <img src="Pictures/air1.3.png" alt="Arctic">
-        <p class="small">Arctic</p>
-      </div>
-
-      <!-- Beach -->
-      <div class="text-center">
-        <img src="Pictures/air1.4.png" alt="Beach">
-        <p class="small">Beach</p>
-      </div>
-
-      <!-- Treehouse -->
-      <div class="text-center">
-        <img src="Pictures/air2.1.png" alt="Treehouse">
-        <p class="small">Treehouse</p>
-      </div>
-
-      <!-- Pools -->
-      <div class="text-center">
-        <img src="Pictures/air2.3.png" alt="Pools">
-        <p class="small">Pools</p>
-      </div>
+      <!-- scroll controls -->
+      <button class="scroll-btn left" onclick="scrollCategories(-300)" aria-label="Scroll left">&#10094;</button>
+      <button class="scroll-btn right" onclick="scrollCategories(300)" aria-label="Scroll right">&#10095;</button>
     </div>
   </section>
 
@@ -106,172 +108,212 @@
     <div class="container">
       <div class="row g-4">
 
-        <!-- Go VIP with Kevin Hart -->
+        <!-- 1 Kevin Hart (linked) -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card position-relative">
             <a href="kevinharts.html" class="stretched-link" aria-label="Go VIP with Kevin Hart"></a>
-            <img src="Pictures/air1.4.png" alt="Go VIP with Kevin Hart">
+            <img src="Pictures/air1.4.png" alt="Go VIP with Kevin Hart" loading="lazy" decoding="async">
             <h6 class="mt-2">Go VIP with Kevin Hart</h6>
             <p class="text-muted small">Hosted by Kevin Hart · Coming July</p>
           </div>
         </div>
 
-        <!-- Train at the X-Mansion -->
+        <!-- 2 Train at the X-Mansion -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/air1.2.png" alt="">
+            <img src="Pictures/air1.2.png" alt="Train at the X-Mansion" loading="lazy" decoding="async">
             <h6 class="mt-2">Train at the X-Mansion</h6>
             <p class="text-muted small">Hosted by Jubilee · Booking closed</p>
           </div>
         </div>
 
-        <!-- Stay in Prince’s Purple Rain house -->
+        <!-- 3 Stay in Prince’s Purple Rain house -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/air1.3.png" alt="">
+            <img src="Pictures/air1.3.png" alt="Stay in Purple Rain house" loading="lazy" decoding="async">
             <h6 class="mt-2">Stay in Prince’s Purple Rain house</h6>
-            <p class="text-muted small">Hosted by Wendy & Lisa · Coming August</p>
+            <p class="text-muted small">Hosted by Wendy &amp; Lisa · Coming August</p>
           </div>
         </div>
 
-        <!-- Air Cover -->
-        <div class="col-md-3 col-sm-6">
-          <div class="listing-card position-relative">
-            <a href="aircover.html" class="stretched-link" aria-label="Air Cover"></a>
-            <img src="Pictures/air1.1.png" alt="Air Cover">
-            <h6 class="mt-2">Air Cover</h6>
-            <p class="text-muted small">Safety & support included</p>
-          </div>
-        </div>
-
-        <!-- Other listings (unchanged) -->
+        <!-- 4 Drift off in the Up house -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/air2.1.png" alt="">
+            <img src="Pictures/air1.1.png" alt="Drift off in the Up house" loading="lazy" decoding="async">
+            <h6 class="mt-2">Drift off in the Up house</h6>
+            <p class="text-muted small">Hosted by Carl Fredricksen · Booking closed</p>
+          </div>
+        </div>
+
+        <!-- 5 Join a living room session with Doja -->
+        <div class="col-md-3 col-sm-6">
+          <div class="listing-card">
+            <img src="Pictures/air2.1.png" alt="Join a living room session with Doja" loading="lazy" decoding="async">
             <h6 class="mt-2">Join a living room session with Doja</h6>
             <p class="text-muted small">Hosted by Doja Cat · Coming October</p>
           </div>
         </div>
 
+        <!-- 6 Make core memories with Inside Out -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/air22.2.png" alt="">
-            <h6 class="mt-2">Make core memories with Inside...</h6>
+            <img src="Pictures/air22.2.png" alt="Make core memories with Inside Out" loading="lazy" decoding="async">
+            <h6 class="mt-2">Make core memories with Inside Out</h6>
             <p class="text-muted small">Hosted by Joy · Sold out</p>
           </div>
         </div>
 
+        <!-- 7 Open the Olympic Games at Musée -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/air2.3.png" alt="">
+            <img src="Pictures/air2.3.png" alt="Open the Olympic Games at Musée" loading="lazy" decoding="async">
             <h6 class="mt-2">Open the Olympic Games at Musée</h6>
             <p class="text-muted small">Hosted by Mathieu Lehanneur · Sold out</p>
           </div>
         </div>
 
+        <!-- 8 Wake up in the Musée d’Orsay -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/air2.44.png" alt="">
+            <img src="Pictures/air2.44.png" alt="Wake up in the Musée d’Orsay" loading="lazy" decoding="async">
             <h6 class="mt-2">Wake up in the Musée d’Orsay</h6>
             <p class="text-muted small">Hosted by Mathieu Lehanneur · Sold out</p>
           </div>
         </div>
 
+        <!-- 9 Crash at the X-Mansion -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/air3.22.png" alt="">
+            <img src="Pictures/air3.22.png" alt="Crash at the X-Mansion" loading="lazy" decoding="async">
             <h6 class="mt-2">Crash at the X-Mansion</h6>
             <p class="text-muted small">Hosted by Jubilee · Sold out</p>
           </div>
         </div>
 
+        <!-- 10 Live like Bollywood star Janhvi Kapoor -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/air3.33.png" alt="">
+            <img src="Pictures/air3.33.png" alt="Live like Bollywood star Janhvi Kapoor" loading="lazy" decoding="async">
             <h6 class="mt-2">Live like Bollywood star Janhvi Kapoor</h6>
             <p class="text-muted small">Hosted by Janhvi Kapoor · Sold out</p>
           </div>
         </div>
 
+        <!-- 11 Spend the night in the Ferrari Museum -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/41.jpg" alt="">
+            <img src="Pictures/41.jpg" alt="Spend the night in the Ferrari Museum" loading="lazy" decoding="async">
             <h6 class="mt-2">Spend the night in the Ferrari Museum</h6>
             <p class="text-muted small">Hosted by Marc Gené · Sold out</p>
           </div>
         </div>
 
+        <!-- 12 Shrek’s Swamp -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/42.2.png" alt="">
+            <img src="Pictures/42.2.png" alt="Shrek’s Swamp" loading="lazy" decoding="async">
             <h6 class="mt-2">Shrek’s Swamp</h6>
             <p class="text-muted small">Hosted by Donkey · Sold out</p>
           </div>
         </div>
 
+        <!-- 13 Barbie’s Malibu DreamHouse -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/43.3.png" alt="">
+            <img src="Pictures/43.3.png" alt="Barbie’s Malibu DreamHouse" loading="lazy" decoding="async">
             <h6 class="mt-2">Barbie’s Malibu DreamHouse</h6>
             <p class="text-muted small">Hosted by Ken · Sold out</p>
           </div>
         </div>
 
+        <!-- 14 Ted Lasso’s Favorite Pub -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/4.4.png" alt="">
+            <img src="Pictures/4.4.png" alt="Ted Lasso’s Favorite Pub" loading="lazy" decoding="async">
             <h6 class="mt-2">Ted Lasso’s Favorite Pub</h6>
             <p class="text-muted small">Hosted by Mae · Sold out</p>
           </div>
         </div>
 
+        <!-- 15 Design your Incredibles Supersuit -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/air3.1.jpeg" alt="">
+            <img src="Pictures/air3.1.jpeg" alt="Design your Incredibles Supersuit" loading="lazy" decoding="async">
             <h6 class="mt-2">Design your Incredibles Supersuit</h6>
             <p class="text-muted small">Hosted by Edna Mode · Sold out</p>
           </div>
         </div>
 
+        <!-- 16 Go on tour with Feid -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/air3.44.png" alt="">
+            <img src="Pictures/air3.44.png" alt="Go on tour with Feid" loading="lazy" decoding="async">
             <h6 class="mt-2">Go on tour with Feid</h6>
             <p class="text-muted small">Hosted by Feid · Sold out</p>
           </div>
         </div>
 
+        <!-- 17 The Last Blockbuster -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/51.1.png" alt="">
+            <img src="Pictures/51.1.png" alt="The Last Blockbuster" loading="lazy" decoding="async">
             <h6 class="mt-2">The Last Blockbuster</h6>
             <p class="text-muted small">Hosted by Sandi · Sold out</p>
           </div>
         </div>
 
+        <!-- 18 Game with Khaby Lame -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/air55.1.png" alt="">
+            <img src="Pictures/air55.1.png" alt="Game with Khaby Lame" loading="lazy" decoding="async">
             <h6 class="mt-2">Game with Khaby Lame</h6>
             <p class="text-muted small">Hosted by Khaby Lame · Sold out</p>
           </div>
         </div>
 
+        <!-- 19 Houseplant Retreat -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/air399.png" alt="">
+            <img src="Pictures/air399.png" alt="Houseplant Retreat" loading="lazy" decoding="async">
             <h6 class="mt-2">Houseplant Retreat</h6>
             <p class="text-muted small">Hosted by Seth Rogen · Sold out</p>
           </div>
         </div>
 
+        <!-- 20 Home Alone Holiday -->
         <div class="col-md-3 col-sm-6">
           <div class="listing-card">
-            <img src="Pictures/4.4.png" alt="">
+            <img src="Pictures/4.4.png" alt="Home Alone Holiday" loading="lazy" decoding="async">
             <h6 class="mt-2">Home Alone Holiday</h6>
             <p class="text-muted small">Hosted by Buzz · Sold out</p>
           </div>
         </div>
+
+        <!-- Additional Earth Homes region cards (from your EarthHomes page) -->
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air211.png" alt=""><h6 class="mt-2">Khalai, India</h6><p class="text-muted small">2,138 kilometres away · 5–10 July · <b>₹2,682/night</b></p></div></div>
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air212.png" alt=""><h6 class="mt-2">Abirim, Israel</h6><p class="text-muted small">5,060 kilometres away · 5–10 July · <b>₹35,533/night</b></p></div></div>
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air213.png" alt=""><h6 class="mt-2">Rakwana, Sri Lanka</h6><p class="text-muted small">736 kilometres away · 5–10 July · <b>₹9,718/night</b></p></div></div>
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air51.3.png" alt=""><h6 class="mt-2">Amphoe Pai, Thailand</h6><p class="text-muted small">2,059 kilometres away · 8–13 July · <b>₹1,192/night</b></p></div></div>
+
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air222.png" alt=""><h6 class="mt-2">Keylong, India</h6><p class="text-muted small">2,193 kilometres away · 7–12 July · <b>₹3,081/night</b></p></div></div>
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air223.png" alt=""><h6 class="mt-2">Kamshet, India</h6><p class="text-muted small">964 kilometres away · 7–12 July · <b>₹5,709/night</b></p></div></div>
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air224.png" alt=""><h6 class="mt-2">Munnar, India</h6><p class="text-muted small">483 kilometres away · 21–26 Aug · <b>₹12,800/night</b></p></div></div>
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air231.png" alt=""><h6 class="mt-2">Idukki, India</h6><p class="text-muted small">493 kilometres away · 16–21 July · <b>₹9,014/night</b></p></div></div>
+
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air1114.png" alt=""><h6 class="mt-2">Shahapur, India</h6><p class="text-muted small">1,006 kilometres away · 21–26 July · <b>₹4,565/night</b></p></div></div>
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air1115.png" alt=""><h6 class="mt-2">Anandpur, India</h6><p class="text-muted small">2,020 kilometres away · 7–12 July · <b>₹5,500/night</b></p></div></div>
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air234.png" alt=""><h6 class="mt-2">Kodaikanal, India</h6><p class="text-muted small">439 kilometres away · 5–11 July · <b>₹11,000/night</b></p></div></div>
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air421.png" alt=""><h6 class="mt-2">Guryong-myeon, Buyeo, South Korea</h6><p class="text-muted small">5,294 kilometres away · 9–14 Sep · <b>₹13,455/night</b></p></div></div>
+
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air422.png" alt=""><h6 class="mt-2">Naggar, India</h6><p class="text-muted small">2,140 kilometres away · 15–20 July · <b>₹9,694/night</b></p></div></div>
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air1113.png" alt=""><h6 class="mt-2">Moneragala, Sri Lanka</h6><p class="text-muted small">732 kilometres away · 5–10 July · <b>₹2,726/night</b></p></div></div>
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air611.png" alt=""><h6 class="mt-2">Bolpur, India</h6><p class="text-muted small">1,414 kilometres away · 5–10 July · <b>₹1,712/night</b></p></div></div>
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air612.png" alt=""><h6 class="mt-2">Pyoseon-myen, South Korea</h6><p class="text-muted small">5,207 kilometres away · 10–15 July · <b>₹9,016/night</b></p></div></div>
+
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air613.png" alt=""><h6 class="mt-2">Voi 603, Kenya</h6><p class="text-muted small">4,959 kilometres away · 6–11 July · <b>₹4,373/night</b></p></div></div>
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air614.png" alt=""><h6 class="mt-2">Sigiriya, Sri Lanka</h6><p class="text-muted small">573 kilometres away · 4–9 July · <b>₹2,087/night</b></p></div></div>
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air1112.png" alt=""><h6 class="mt-2">Anandpur, India</h6><p class="text-muted small">2,020 kilometres away · 7–12 July · <b>₹5,500/night</b></p></div></div>
+        <div class="col-md-3 col-sm-6"><div class="listing-card"><img src="Pictures/air1111.png" alt=""><h6 class="mt-2">Keylong, India</h6><p class="text-muted small">2,193 kilometres away · 7–12 July · <b>₹3,081/night</b></p></div></div>
 
       </div>
     </div>
@@ -287,23 +329,58 @@
             <li>Help Center</li>
             <li><a href="aircover.html">Air Cover</a></li>
             <li>Cancellation Options</li>
+            <li>Report Neighbourhood Concern</li>
           </ul>
         </div>
+
         <div class="col-md-4">
           <h5>Hosting</h5>
-          <ul><li>Airbnb your home</li><li>Hosting resources</li><li>Community forum</li></ul>
+          <ul>
+            <li>List your home</li>
+            <li>Air Cover for Hosts</li>
+            <li>Hosting resources</li>
+            <li>Community forum</li>
+          </ul>
         </div>
+
         <div class="col-md-4">
-          <h5>Airbnb</h5>
-          <ul><li>Newsroom</li><li>Careers</li><li>Investors</li></ul>
+          <h5>About</h5>
+          <ul>
+            <li>Newsroom</li>
+            <li>Careers</li>
+            <li>Investors</li>
+            <li>Airbnb.org emergency</li>
+          </ul>
         </div>
       </div>
+
       <div class="text-center mt-3 text-muted small">
-        &copy; 2025 MyBnB · Privacy · Terms · Sitemap
+        &copy; 2024 MyBnB · Privacy · Terms · Sitemap
       </div>
     </div>
   </footer>
 
+  <!-- SCRIPTS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function scrollCategories(amount) {
+      const row = document.getElementById("categoryRow");
+      if (row) row.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchForm = document.querySelector('.search-bar form');
+      if (searchForm) {
+        searchForm.addEventListener('submit', e => {
+          e.preventDefault();
+          const where = searchForm.querySelector('input[name="where"]')?.value || '';
+          const checkin = searchForm.querySelector('input[name="checkin"]')?.value || '';
+          const checkout = searchForm.querySelector('input[name="checkout"]')?.value || '';
+          const guests = searchForm.querySelector('select[name="guests"]')?.value || '';
+          alert(`Search for: ${where} | ${checkin} - ${checkout} | Guests: ${guests}`);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
