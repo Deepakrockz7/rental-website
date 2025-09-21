@@ -1,77 +1,143 @@
-.btn{
-	box-shadow: inset 2px 4px 5px -3px rgba(0,0,0,0.6);
-	padding-top:5px;
-	margin-top: 10px;
-	font-size:15px;
-	padding-left:-20px;
-	padding-left:30px;
-	border-radius:20px;
-	transition:0.2s ease;
+/* =====================
+   Global Styles
+===================== */
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background-color: #ffffff;
+  color: #222;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
 }
 
-.container1{
-	padding-left:16%;
+/* =====================
+   Navbar
+===================== */
+.navbar {
+  font-size: 15px;
+}
+.navbar-brand {
+  font-weight: 600;
+  color: #ff385c !important; /* Airbnb red */
+}
+.navbar .btn {
+  font-size: 14px;
 }
 
-.profile{
-	margin-left: 13%;
-	margin-TOP:  20px;
-	border-radius: 60px;
+/* =====================
+   Hero Section
+===================== */
+.hero-section {
+  position: relative;
+  height: 320px;
+  background: url('Pictures/kevin1.png') center/cover no-repeat;
+}
+.hero-section::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0));
 }
 
-.profile-Name{
-margin-left: 16.5%;
-margin-top: -30px;
-
+/* =====================
+   Host Profile
+===================== */
+.host-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.host-profile img {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+.host-profile h5 {
+  margin: 0;
+}
+.host-profile p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
 }
 
-.kevin-box{
-	box-shadow: 4px 3px 63px 26px rgba(20,22,20,0.6);
-	border-radius: 10px;
-	text-align: center;
-	margin-left:6%;
-	margin-right:20%;
-	padding-bottom:20px;
-	padding-top:20px;
-	border-radius: 20px;
-	margin-top:-22%;
-	border-style: none;
-
+/* =====================
+   Notify Me Card
+===================== */
+.notify-card {
+  border: 2px solid #ff385c;
+  border-radius: 12px;
+  background: #fff7f9;
+  text-align: center;
+  padding: 2rem;
+}
+.notify-card h2 {
+  font-size: 1.8rem;
+  color: #ff385c;
+}
+.notify-card .btn-info {
+  background-color: #17a2b8;
+  border: none;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: background 0.2s;
+}
+.notify-card .btn-info:hover {
+  background-color: #138496;
 }
 
-
-.kevin-box-2{
-	box-shadow: 2px 4px 6px 12px rgba(20,20,20,0.4);
-	border-radius:60%;
-	padding-left:25%;
-	margin-left:6%;
-	margin-right:20%;
-	margin-bottom:20px;
-	padding-bottom:20px;
+/* =====================
+   Meet your host
+===================== */
+.meet-host img {
+  border-radius: 12px;
+  object-fit: cover;
+}
+.meet-host ul {
+  padding-left: 1rem;
+  font-size: 14px;
+  color: #444;
 }
 
-.Kevin-imm{
-	border-radius:60px;
-	margin-left: 6%;
-	margin-bottom: 50px:
+/* =====================
+   Booking details
+===================== */
+.booking-details h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
 }
-.iconn{
-font-size:75px;
-font-weight: 600;
-}
-
-.list{
-list-style-type:none;
-color:black;
+.booking-details p {
+  font-size: 14px;
+  color: #555;
 }
 
-ul.horizontal-list li{ 
-margin-right: 40px; 
+/* =====================
+   Footer
+===================== */
+footer {
+  background: #f7f7f7;
+  padding: 40px 0;
 }
-
-.ten{
-	color:black;
+footer h5 {
+  font-size: 15px;
+  margin-bottom: 12px;
 }
-.banner{
-	border-radius:20px;
+footer ul {
+  padding: 0;
+  list-style: none;
+}
+footer ul li {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #444;
+}
+footer ul li:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+footer .text-muted {
+  color: #777 !important;
 }
