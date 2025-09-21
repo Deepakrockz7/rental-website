@@ -1,0 +1,137 @@
+/* =====================
+   earth.css — styles for Earth Homes page
+   ===================== */
+
+/* Global */
+:root {
+  --brand-red: #ff385c;
+  --muted: #6c757d;
+  --bg-light: #f7f7f7;
+  --card-radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  color: #222;
+  background: #fff;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Navbar (consistent with other pages) */
+.navbar {
+  font-size: 15px;
+  background: #fff;
+}
+.navbar-brand {
+  font-weight: 700;
+  color: var(--brand-red) !important;
+}
+
+/* Category icons row */
+.category-icons {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  padding: .5rem 0;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+}
+.category-icons::-webkit-scrollbar { display: none; } /* Chrome */
+.category-icons .text-center {
+  min-width: 70px;
+  text-align: center;
+}
+.category-icons img {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto .35rem;
+}
+.category-icons p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Page main container */
+main {
+  padding-top: 2rem;
+  padding-bottom: 2.5rem;
+}
+
+/* Listing cards */
+.listing-card {
+  background: #fff;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease;
+  cursor: pointer;
+}
+.listing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+.listing-card img {
+  width: 100%;
+  height: 200px;              /* uniform height */
+  object-fit: cover;
+  display: block;
+}
+.listing-card h6 {
+  font-size: 15px;
+  margin: .6rem .75rem 0.25rem;
+}
+.listing-card p {
+  margin: 0 0 .9rem .75rem;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Responsive tweaks */
+@media (min-width: 992px) {
+  .listing-card img { height: 220px; }
+}
+@media (max-width: 576px) {
+  .category-icons img { width: 40px; height: 40px; }
+  .listing-card img { height: 160px; }
+}
+
+/* Footer */
+footer {
+  background: var(--bg-light);
+  padding: 32px 0;
+  margin-top: 1.5rem;
+}
+footer h5 {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+footer ul {
+  list-style: none;
+  padding-left: 0;
+}
+footer ul li {
+  margin-bottom: 8px;
+  color: #444;
+  font-size: 14px;
+}
+footer .text-muted { color: #777 !important; }
+
+/* Utility */
+.text-muted { color: var(--muted); }
+
+/* Accessibility: make listing-card focusable for keyboard users */
+.listing-card:focus-within,
+.listing-card a:focus {
+  outline: 3px solid rgba(255,56,92,0.12);
+  outline-offset: 3px;
+}
+
+/* Small spacing helpers that match the site */
+.mt-2 { margin-top: .5rem !important; }
+.mb-3 { margin-bottom: .75rem !important; }
